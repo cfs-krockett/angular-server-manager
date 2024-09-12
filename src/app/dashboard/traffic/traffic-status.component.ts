@@ -1,4 +1,5 @@
-import { Component, Input } from '@angular/core';
+import { Component } from '@angular/core';
+import { DUMMY_TRAFFIC_DATA } from './dummy-traffic-data';
 
 @Component({
   selector: 'app-traffic-status',
@@ -8,6 +9,7 @@ import { Component, Input } from '@angular/core';
   styleUrl: './traffic-status.component.css',
 })
 export class TrafficStatusComponent {
-  @Input() dummyTrafficData!: { id: string; value: number }[];
-  @Input() maxTraffic!: number;
+  dummyTrafficData = DUMMY_TRAFFIC_DATA;
+
+  maxTraffic = Math.max(...this.dummyTrafficData.map((data) => data.value));
 }
